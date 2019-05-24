@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>hoisting</title>
+
+        <script>
+            'use strict';
+            console.log("Variable hoisting :" + var1);
+            var var1 = 'test';
+
+            function functionHoist() {
+                console.log('function hoist :' + message);
+                var message='function';
+            }
+            functionHoist();
+
+            function functionHoistStrict() {
+                'use strict';
+                console.log('function hoist :' + message);
+                var message='function';
+            }
+            functionHoistStrict();
+
+
+            hoisted();
+
+            function hoisted() {
+                console.log('This function has been hoisted.');
+            };
+
+            funexp();
+            var funexp = function() {
+                console.log('This funexp has been hoisted.');
+            }
+            
+        </script>
+    </head>
+    <body>
+        Test hoisting
+    </body>
+</html>
