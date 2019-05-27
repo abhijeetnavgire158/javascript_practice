@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Worker Example</title>
+        
+    </head>
+    <body>
+        <span id="result">RESULT ::</span>
+        <button onclick="workStart()"> Work Start</button>
+        <button onclick="workBreak()"> Break</button>
+        <button onclick="workStop()"> Work Stop</button>
+
+        <script>
+                var worker = new Worker('worker-example.js');
+                function workStart() {
+                    worker.postMessage({cmd: 'start', msg: 'START WORK'});
+                }
+    
+                function workStop() {
+                    worker.postMessage({cmd: 'stop', msg: 'STOP WORK'});
+                }
+    
+                function workBreak() {
+                    worker.postMessage({cmd: 'break', msg: 'LUNCH BREAK'});
+                }
+    
+                worker.addEventListener('message', function(e) {
+                    document.getElementById("result").innerHTML = e.data;
+                },false);
+            </script>
+    </body>
+</html>

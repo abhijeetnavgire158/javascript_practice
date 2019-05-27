@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Events </title>
+        <script>
+            first = document.getElementById('first');
+            second = document.getElementById('second');
+           
+
+            function init() {
+                first = document.getElementById('first');
+                second = document.getElementById('second');
+            }
+
+            window.onload = init;
+
+            var myWorker = new Worker('worker.js');
+            
+            myWorker.addEventListener('message', function(e) {
+                console.log("Work Said " + e.data);
+            }, false);
+
+            function onFirstChange() {
+                myWorker.postMessage([first.value,second.value]);
+                console.log('Message posted to worker');
+            }
+
+            function onSecondChange() {
+                myWorker.postMessage([first.value, second.value]);
+                console.log('Message posted to worker');
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="first" name="first" onchange="onFirstChange()">
+        <input type="text" id="second" name="second" onchange="onSecondChange()">
+    </body>
+</html>
