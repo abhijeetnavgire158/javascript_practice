@@ -15,3 +15,11 @@ if (mobilePatter.test(mobileNumber)) {
 } else {
     console.log('Wrong mobile number');
 }
+
+var onlyAlpha = new RegExp('^[a-zA-Z]*$');
+// var onlyAlpha = /^[a-zA-Z]+$/;
+if (onlyAlpha.exec('213')) {
+    console.log('PASS');
+} else {
+    console.log('Fail');
+}
